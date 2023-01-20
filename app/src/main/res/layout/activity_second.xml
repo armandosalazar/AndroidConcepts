@@ -17,7 +17,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Boton" />
+        android:text="Boton"
+        android:onClick="goToMainActivity"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
