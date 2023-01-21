@@ -1,10 +1,12 @@
 package com.example.androidconcepts;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.androidconcepts.interfaces.UserApi;
 import com.example.androidconcepts.models.User;
@@ -27,28 +29,30 @@ public class RetrofitActivity extends AppCompatActivity {
         textViewEmail = findViewById(R.id.textViewEmail);
     }
 
-    public void getUser(View view) {
+    public void getUserById(View view) {
         Retrofit retrofit = new Retrofit
                 .Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UserApi userApi = retrofit.create(UserApi.class);
-        Call<User> call = userApi.find(1);
+        Call<User> call = userApi.getUserById(1);
         call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                 if (response.isSuccessful()) {
                     User user = response.body();
+                    assert user != null;
                     textViewName.setText(user.getName());
                     textViewUserName.setText(user.getUsername());
                     textViewEmail.setText(user.getEmail());
+                    Toast.makeText(RetrofitActivity.this, "Successfully", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                Toast.makeText(RetrofitActivity.this, "Network Error", Toast.LENGTH_SHORT).show();
             }
         });
     }

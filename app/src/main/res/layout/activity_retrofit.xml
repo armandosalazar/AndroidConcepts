@@ -23,13 +23,16 @@
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:textAlignment="center" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="getUser"
-        android:text="@string/get_user" />
+        android:layout_gravity="end"
+        android:onClick="getUserById"
+        android:text="@string/get_user"
+        tools:ignore="UsingOnClickInXml" />
 
 </LinearLayout>
