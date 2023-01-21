@@ -1,28 +1,32 @@
 package com.example.androidconcepts;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
-    private Button button;
+    private Button btnSecondActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "Hello World");
-        button = findViewById(R.id.button);
-        button.setOnClickListener(view -> openSecondActivity());
+        btnSecondActivity = findViewById(R.id.btnSecondActivity);
+        btnSecondActivity.setOnClickListener(view -> openSecondActivity());
     }
 
-    void openSecondActivity() {
+    private void openSecondActivity() {
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
+    }
+
+    public void openRetrofitActivity(View view) {
+        startActivity(new Intent(this, Retrofit.class));
     }
 }
