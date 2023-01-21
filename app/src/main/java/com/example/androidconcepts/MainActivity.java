@@ -27,6 +27,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openRetrofitActivity(View view) {
-        startActivity(new Intent(this, Retrofit.class));
+        startActivity(new Intent(this, RetrofitActivity.class));
     }
 }

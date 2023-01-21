@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android Concepts</string>
+    <string name="get_user">get user</string>
 </resources>
